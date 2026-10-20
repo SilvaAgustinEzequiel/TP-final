@@ -18,10 +18,11 @@ type
 procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
-procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
-procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
-procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudiante);
-
+procedure LeerRegistroEstudiante(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+procedure GuardarRegistroEstudiante(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure BurbujaLegajo(var a:TarchivoEstudiante);
+procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+procedure MostrarDatosEstudiante(var r: TEstudiante);
 
 implementation
 
@@ -48,13 +49,13 @@ begin
     Close(a);
 end;
 
-procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+procedure LeerRegistroEstudiante(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
 begin
     Seek(a, pos);
     Read(a, r);
 end;
 
-procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure GuardarRegistroEstudiante(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
 begin
     if(FileSize(a) = 0)then
     begin
@@ -90,8 +91,33 @@ begin
 
 end;
 
+procedure BurbujaLegajo(var a:TarchivoEstudiante);
+var
+    r1, r2: TEstudiante;
+    lim, i, j: integer;
+begin
+    lim := FileSize(a) - 1;
+    for i := 1 to lim - 1 do
+    begin
+        for j := 1 to lim - i do
+        begin
+            Seek(a, j);
+            Read(a, r1);
+            Seek(a, j + 1);
+            Read(a, r2);
+            if r1.Legajo > r2.Legajo then
+            begin
+                Seek(a, j+1);
+                Write(a, r1);
+                Seek(a, j);
+                Write(a, r2);
+            end;
+        end;
+    end;
+end;
+
 // NUEVOOOOOOOOOOOOOOOO
-procedure BusquedaBinaria (var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 var 
     pri, ult, med: integer;
     aux,: TEstudiante;
