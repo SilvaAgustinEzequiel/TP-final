@@ -74,8 +74,20 @@ procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudi
 begin 
     write('Ingrese el nombre y apellido del/la estudiante: ');
     readln(r.NombreApellido);
-    write('Ingrese el nombre y apellido del/la estudiante: ');
-    readln(r.NombreApellido);
+    write('Ingrese el DNI del/la estudiante: ');
+    readln(r.DNI);
+    write('Ingrese el Legajo del/la estudiante: ');
+    readln(r.Legajo);
+    write('Ingrese La Carrera del/la estudiante: ');
+    readln(r.Carrera);
+    write('Ingrese el Año de Ingreso del/la estudiante: ');
+    readln(r.AnioIngreso);
+    write('Ingrese el Promedio de la carrera del/la estudiante: ');
+    readln(r.Promedio);
+    write('Ingrese el Porcentaje de la carrera del/la estudiante: ');
+    readln(r.PorcentajeCarrera);
+    r.Estado := true;
+
 end;
 
 // NUEVOOOOOOOOOOOOOOOO
