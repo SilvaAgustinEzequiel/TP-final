@@ -183,5 +183,21 @@ begin
     end;
     until(SioNo = 'n');
 end;
+procedure BuscarEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoEstudiantes(a);
+        BurbujaLegajo(a);
+        BusquedaBinariaEstudiante(a,r,pos);
+        MostrarDatosEstudiante(r);
+        CerrarArchivoEstudiantes(a);
+        write('Desea Buscar a otro/otra Estudiantes? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n')
+end;
 
 end.

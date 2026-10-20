@@ -25,9 +25,8 @@ begin
 // PROGRAMA PRINCIPAL  :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
     AgregarEstudiantes(archivoEstudiantes,posicion,registroEstudiante);
+    BuscarEstudiante(archivoEstudiantes,registroEstudiante,posicion);
     
-    BusquedaBinaria(archivoEstudiantes, registroEstudiante, posicion );
-    MostrarDatosEstudiante(registroEstudiante);
 
 
 end.
