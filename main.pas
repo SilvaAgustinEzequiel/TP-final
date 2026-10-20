@@ -4,7 +4,7 @@ uses
 var 
     archivoEstudiantes: TarchivoEstudiante;
     archivoHabilidades: TarchivoTHabilidades;
-    archivoCompetencias: TarchivoCompetencias; //POPCUCK
+    archivoCompetencias: TarchivoCompetencias; 
 
     registroEstudiante: TEstudiante;
     registroHabilidad: THabilidad;
@@ -12,6 +12,7 @@ var
     
     posicion: integer; // la posicion para pasar como parametro :)
 
+//PROCEDURES :v
 procedure CrearArchivos(var a1: TarchivoEstudiante; var a2: TarchivoTHabilidades; var a3: TarchivoCompetencias);
 begin 
     CrearArchivoEstudiantes(a1);
@@ -20,26 +21,10 @@ begin
 end;
 
 begin 
-// PROGRAMA PRINCIPAL XD :)    
+// PROGRAMA PRINCIPAL  :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
     BusquedaBinaria(archivoEstudiantes, registroEstudiante, posicion );
-    MostrarDatos(registroEstudiante);
-//
-//
-//                   *
-//              *
-//          
-//            * 
-//        *********    
-//        *   *   *
-//        *   *   *
-//        *       *
-//        *       *
-//        *       * 
-//        *       *
-// ********       *********
-// *      *       *       *
-// *      *       *       *
-// ********       *********
+    MostrarDatosEstudiante(registroEstudiante);
+
 
 end.
