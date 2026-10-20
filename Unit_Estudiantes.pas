@@ -20,6 +20,8 @@ procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
 procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudiante);
+
 
 implementation
 
@@ -66,6 +68,14 @@ begin
         Seek(a, pos);
         Write(a, r);
     end;
+end;
+
+procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudiante);
+begin 
+    write('Ingrese el nombre y apellido del/la estudiante: ');
+    readln(r.NombreApellido);
+    write('Ingrese el nombre y apellido del/la estudiante: ');
+    readln(r.NombreApellido);
 end;
 
 // NUEVOOOOOOOOOOOOOOOO
