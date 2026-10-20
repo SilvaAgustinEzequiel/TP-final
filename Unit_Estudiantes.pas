@@ -137,7 +137,21 @@ begin
     end;
 
     BusquedaBinaria := Pos;
-    
+
+end;
+
+procedure ListarTodo(var a: TarchivoEstudiante);
+var
+    R : TEstudiante;
+
+begin
+    Reset(a);
+    while not (EOF(a)) do
+    begin
+    Read(a, R);
+        if r.Estado then
+            MostrarRegistro(R);
+    end;
 end;
 
 
