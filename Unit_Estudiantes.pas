@@ -142,4 +142,20 @@ begin
     writeln('Porcentaje de la Carrera: ',r.PorcentajeCarrera);
 end;
 
+procedure AgregarEstudiantes(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoEstudiantes(a);
+        CargarEstudiante(a,pos,r);
+        GuardarRegistro(a,pos,r);
+        CerrarArchivoEstudiantes(a);
+        write('Desea continuar Agregando Estudiantes? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n');
+end;
+
 end.
