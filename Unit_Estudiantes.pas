@@ -120,7 +120,7 @@ end;
 procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 var 
     pri, ult, med: integer;
-    aux,: TEstudiante;
+    aux: TEstudiante;
     buscado: String;
 begin
     // TOMO EL LEGAJO A BUSCAR :)
@@ -141,7 +141,7 @@ begin
     pri := 0;
     ult := filesize(a) - 1;
     pos := -1;
-    while (pos = 0) and (pri <= ult) do
+    while (pos = -1) and (pri <= ult) do
     begin
         med := (pri + ult) div 2;
         

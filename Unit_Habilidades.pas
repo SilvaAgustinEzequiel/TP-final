@@ -105,4 +105,66 @@ begin
         Write('Codigo de Habilidad: ', r.CodigoHabilidad, ' | Nombre: ', r.Nombre, ' | Categoria: ', r.Categoria);
 end;
 
+procedure BurbujaCodigoHabilidad(var a:TarchivoTHabilidades);
+var
+    lim, i, j: integer;
+    r1, r2: THabilidad;
+begin
+    lim := FileSize(a) - 1;
+    for i := 1 to lim - 1 do
+    begin
+        for j := 1 to lim - i do
+        begin
+            Seek(a, j);
+            Read(a, r1);
+            Seek(a, j + 1);
+            Read(a, r2);
+            if r1.CodigoHabilidad > r2.CodigoHabilidad then
+            begin
+                Seek(a, j+1);
+                Write(a, r1);
+                Seek(a, j);
+                Write(a, r2);
+            end;
+        end;
+    end;
+end;
+
+procedure BusquedaBinariaHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+var
+    pri, ult, med: integer;
+    aux: THabilidad;
+    buscado: string;
+begin
+    pri := 0;
+    ult := FileSize(a) - 1;
+    pos := -1;
+
+    repeat
+    begin
+        write('Ingrese el codigo de la habilidad a buscar: ');
+        readln(buscado);
+
+        if lenght(buscado) < 10 then
+        begin
+            writeln('El codigo de la habilidad debe tener 10 caracteres.');
+            readln;
+        end;
+    end;
+    until lenght(buscado) = 10;
+
+    while (pos = -1) and (pri <= ult) do
+    begin
+        med := (pri + ult) div 2;
+        Seek(a, med);
+        Read(a, aux);
+        if aux.CodigoHabilidad = buscado then
+            pos := med
+        else if aux.CodigoHabilidad < buscado then
+            pri := med + 1
+        else
+            ult := med - 1;
+    end;
+end;
+
 end.
