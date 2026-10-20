@@ -14,18 +14,51 @@ type
 
     TarchivoEstudiante = file of TEstudiante;
 
-procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
-
-
 implementation
 
-uses
-  Crt;
+uses 
+    Crt, SysUtils;
 
 procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
 begin 
+    if FileExist('Competencias.dat') then
+        writeln('El archivo ya existe')
+    else 
+        Assign(a, 'Estudiantes.dat');
+        rewrite(a);
+end;
+
+procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
+begin
     Assign(a, 'Estudiantes.dat');
-    rewrite(a);
+    Reset(a)
+end;
+
+procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
+begin
+    Close(a);
+end;
+
+procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+begin
+    Seek(a, pos);
+    Read(a, r);
+end;
+
+procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+begin
+    if(FileSize(a) = 0)then
+    begin
+        pos := 0;
+        Seek(a, pos);
+        Write(a, r);
+    end
+    else
+    begin
+        pos := FileSize(a);
+        Seek(a, pos);
+        Write(a, r);
+    end;
 end;
 
 end.
