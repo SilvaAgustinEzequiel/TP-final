@@ -6,6 +6,7 @@ type
         Legajo: String[10];
         CodigoHabilidad: String[10];
         NivelDominio: String[10];
+        Estado: boolean;
         end;
 
     TarchivoCompetencias = file of TCompetencia;
