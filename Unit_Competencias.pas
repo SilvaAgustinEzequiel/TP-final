@@ -29,8 +29,19 @@ begin
         rewrite(a);
 end;
 
-procedure CargarRegistroCompetencias(var c: TCompetencia);
+procedure abrirRegistroCompetencias(var a: TArchivoCompetencias);
 begin 
+        Assign(a, 'competencias.dat');
+        reset(a);
+
+end;
+procedure cerrarRegristrosCompetencias(var a: TArchivosCompetencias);
+begin
+        close(a)
+end;
+procedure LeerRegistroCompetencias(var a: TArchivosCompetencias;pos:integer var r :TCompetencia);
+
+begin
 
 end;
 end.
