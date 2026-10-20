@@ -109,9 +109,15 @@ begin
             pri := med + 1;
     end;
 end;
-procedure MostrarDatos(var r: TEstudiante);
+procedure MostrarDatosEstudiante(var r: TEstudiante);
 begin 
-    //COSITAS AQUIIII
+    writeln('Nombre y apellido: ',r.NombreApellido);
+    writeln('DNI: ',r.DNI);
+    writeln('Legajo: ',r.Legajo);
+    writeln('Carrera: ',r.Carrera);
+    writeln('Año de Ingreso: ',r.AnioIngreso);
+    writeln('Promedio en la Carrera: ',r.Promedio);
+    writeln('Porcentaje de la Carrera: ',r.PorcentajeCarrera);
 end;
 
 end.
