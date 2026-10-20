@@ -17,12 +17,15 @@ procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
 implementation
 
 uses
-  Crt;
+  Crt, SysUtils;
 
 procedure CrearArchivoCompetencias(var a: TArchivoCompetencias);
 begin 
-    Assign(a, 'Competencias.dat');
-    rewrite(a);
+    if FileExist('Competencias.dat') then
+        writeln('El archivo ya existe')
+    else 
+        Assign(a, 'Competencias.dat');
+        rewrite(a);
 end;
 
 procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
