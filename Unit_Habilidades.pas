@@ -19,8 +19,6 @@ procedure LeerRegistro(var a: TarchivoTHabilidades; var r: THabilidad);
 procedure MostrarDatos(var r: THabilidad);
 function VerificarRepetido(var r: THabilidad):boolean;
 
-
-
 implementation
 
 uses
@@ -43,7 +41,7 @@ begin
     Close(a);
 end;
 
-procedure LeerRegistroArchivo(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
+procedure LeerRegistroArchivoHabilidades(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
 begin
     Seek(a, pos);
     Read(a, r);
@@ -66,7 +64,7 @@ begin
     end;
 end;
 
-procedure GuardarRegistro(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
+procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
 var
     repetido: boolean;
 begin
@@ -88,7 +86,7 @@ begin
     end;
 end;
 
-procedure LeerRegistro(var a: TarchivoTHabilidades; var r: THabilidad);
+procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);
 begin
     with r do  
     begin
@@ -101,7 +99,7 @@ begin
     end;
 end;
 
-procedure MostrarDatos(var r: THabilidad);
+procedure MostrarDatosHabilidades(var r: THabilidad);
 begin
     if r.Estado then
         Write('Codigo de Habilidad: ', r.CodigoHabilidad, ' | Nombre: ', r.Nombre, ' | Categoria: ', r.Categoria);
