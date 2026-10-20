@@ -50,7 +50,7 @@ begin
     if(FileSize(a) = 0)then
     begin
         pos := 0;
-        Seek(a, pos);
+        Seek(a, pos);     // belezaAAAAAA
         Write(a, r);
     end
     else

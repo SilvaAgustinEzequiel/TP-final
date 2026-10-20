@@ -28,6 +28,8 @@ begin
         rewrite(a);
 end;
 
-procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
+procedure CargarRegistroCompetencias(var c: TCompetencia);
+begin 
 
+end;
 end.
