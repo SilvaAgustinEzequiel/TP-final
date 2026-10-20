@@ -20,14 +20,13 @@ begin
     CrearArchivoCompetencias(a3);
 end;
 
+
 begin 
 // PROGRAMA PRINCIPAL  :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
-    CargarEstudiante(archivoEstudiantes, posicion, registroEstudiante);
+    AgregarEstudiantes(archivoEstudiantes,posicion,registroEstudiante);
+    BuscarEstudiante(archivoEstudiantes,registroEstudiante,posicion);
     
-    
-    BusquedaBinaria(archivoEstudiantes, registroEstudiante, posicion );
-    MostrarDatosEstudiante(registroEstudiante);
 
 
 end.
