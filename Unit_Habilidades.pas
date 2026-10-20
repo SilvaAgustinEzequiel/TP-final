@@ -6,6 +6,7 @@ type
         CodigoHabilidad: String[10];
         Nombre: String[40];
         Cetegoria: String[30];
+        Estado: boolean;
         end;
 
     TarchivoTHabilidades = file of THabilidad;
