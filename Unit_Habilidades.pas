@@ -13,10 +13,10 @@ type
 procedure CrearArchivoHabilidades(var a: TarchivoTHabilidades);
 procedure AbrirArchivoHabilidades(var a: TarchivoTHabilidades);
 procedure CerrarArchivoHabilidades(var a: TarchivoTHabilidades);
-procedure LeerRegistroArchivo(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
-procedure GuardarRegistro(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
-procedure LeerRegistro(var a: TarchivoTHabilidades; var r: THabilidad);
-procedure MostrarDatos(var r: THabilidad);
+procedure LeerRegistroArchivoHabilidades(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
+procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
+procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);
+procedure MostrarDatosHabilidades(var r: THabilidad);
 function VerificarRepetido(var r: THabilidad):boolean;
 
 implementation
