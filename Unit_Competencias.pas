@@ -11,6 +11,7 @@ type
     TarchivoCompetencias = file of TCompetencia;
 
 procedure CrearArchivoCompetencias(var a: TArchivoCompetencias);
+procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
 
 
 implementation
@@ -23,3 +24,7 @@ begin
     Assign(a, 'Competencias.dat');
     rewrite(a);
 end;
+
+procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
+
+end.
