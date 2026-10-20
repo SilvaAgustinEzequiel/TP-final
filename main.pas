@@ -1,6 +1,6 @@
 program TP_Final;
 uses
-    Unit_Competencias, Unit_Estudiantes, Unit_Habilidades;
+    Unit_Competencias, Unit_Estudiantes, Unit_Habilidades, crt;
 var 
     archivoEstudiantes: TarchivoEstudiante;
     archivoHabilidades: TarchivoTHabilidades;
@@ -20,11 +20,13 @@ begin
     CrearArchivoCompetencias(a3);
 end;
 
+
 begin 
 // PROGRAMA PRINCIPAL  :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
-    BusquedaBinaria(archivoEstudiantes, registroEstudiante, posicion );
-    MostrarDatosEstudiante(registroEstudiante);
+    AgregarEstudiantes(archivoEstudiantes,posicion,registroEstudiante);
+    BuscarEstudiante(archivoEstudiantes,registroEstudiante,posicion);
+    
 
 
 end.

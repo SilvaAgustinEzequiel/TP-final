@@ -18,8 +18,11 @@ type
 procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
 procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
-procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
-procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure LeerRegistroEstudiante(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+procedure GuardarRegistroEstudiante(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure BurbujaLegajo(var a:TarchivoEstudiante);
+procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+procedure MostrarDatosEstudiante(var r: TEstudiante);
 
 implementation
 
@@ -46,13 +49,13 @@ begin
     Close(a);
 end;
 
-procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+procedure LeerRegistroEstudiante(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
 begin
     Seek(a, pos);
     Read(a, r);
 end;
 
-procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+procedure GuardarRegistroEstudiante(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
 begin
     if(FileSize(a) = 0)then
     begin
@@ -68,11 +71,56 @@ begin
     end;
 end;
 
+procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudiante);
+begin 
+    write('Ingrese el nombre y apellido del/la estudiante: ');
+    readln(r.NombreApellido);
+    write('Ingrese el DNI del/la estudiante: ');
+    readln(r.DNI);
+    write('Ingrese el Legajo del/la estudiante: ');
+    readln(r.Legajo);
+    write('Ingrese La Carrera del/la estudiante: ');
+    readln(r.Carrera);
+    write('Ingrese el Año de Ingreso del/la estudiante: ');
+    readln(r.AnioIngreso);
+    write('Ingrese el Promedio de la carrera del/la estudiante: ');
+    readln(r.Promedio);
+    write('Ingrese el Porcentaje de la carrera del/la estudiante: ');
+    readln(r.PorcentajeCarrera);
+    r.Estado := true;
+
+end;
+
+procedure BurbujaLegajo(var a:TarchivoEstudiante);
+var
+    r1, r2: TEstudiante;
+    lim, i, j: integer;
+begin
+    lim := FileSize(a) - 1;
+    for i := 1 to lim - 1 do
+    begin
+        for j := 1 to lim - i do
+        begin
+            Seek(a, j);
+            Read(a, r1);
+            Seek(a, j + 1);
+            Read(a, r2);
+            if r1.Legajo > r2.Legajo then
+            begin
+                Seek(a, j+1);
+                Write(a, r1);
+                Seek(a, j);
+                Write(a, r2);
+            end;
+        end;
+    end;
+end;
+
 // NUEVOOOOOOOOOOOOOOOO
-procedure BusquedaBinaria (var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 var 
     pri, ult, med: integer;
-    aux,: TEstudiante;
+    aux: TEstudiante;
     buscado: String;
 begin
     // TOMO EL LEGAJO A BUSCAR :)
@@ -93,7 +141,7 @@ begin
     pri := 0;
     ult := filesize(a) - 1;
     pos := -1;
-    while (pos = 0) and (pri <= ult) do
+    while (pos = -1) and (pri <= ult) do
     begin
         med := (pri + ult) div 2;
         
@@ -118,6 +166,38 @@ begin
     writeln('Año de Ingreso: ',r.AnioIngreso);
     writeln('Promedio en la Carrera: ',r.Promedio);
     writeln('Porcentaje de la Carrera: ',r.PorcentajeCarrera);
+end;
+
+procedure AgregarEstudiantes(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoEstudiantes(a);
+        CargarEstudiante(a,pos,r);
+        GuardarRegistro(a,pos,r);
+        CerrarArchivoEstudiantes(a);
+        write('Desea continuar Agregando Estudiantes? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n');
+end;
+procedure BuscarEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoEstudiantes(a);
+        BurbujaLegajo(a);
+        BusquedaBinariaEstudiante(a,r,pos);
+        MostrarDatosEstudiante(r);
+        CerrarArchivoEstudiantes(a);
+        write('Desea Buscar a otro/otra Estudiantes? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n')
 end;
 
 end.

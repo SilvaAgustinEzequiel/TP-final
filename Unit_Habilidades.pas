@@ -13,13 +13,11 @@ type
 procedure CrearArchivoHabilidades(var a: TarchivoTHabilidades);
 procedure AbrirArchivoHabilidades(var a: TarchivoTHabilidades);
 procedure CerrarArchivoHabilidades(var a: TarchivoTHabilidades);
-procedure LeerRegistroArchivo(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
-procedure GuardarRegistro(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
-procedure LeerRegistro(var a: TarchivoTHabilidades; var r: THabilidad);
-procedure MostrarDatos(var r: THabilidad);
+procedure LeerRegistroArchivoHabilidades(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
+procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
+procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);
+procedure MostrarDatosHabilidades(var r: THabilidad);
 function VerificarRepetido(var r: THabilidad):boolean;
-
-
 
 implementation
 
@@ -43,7 +41,7 @@ begin
     Close(a);
 end;
 
-procedure LeerRegistroArchivo(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
+procedure LeerRegistroArchivoHabilidades(var a: TarchivoTHabilidades; pos:integer; var r: THabilidad);
 begin
     Seek(a, pos);
     Read(a, r);
@@ -66,7 +64,7 @@ begin
     end;
 end;
 
-procedure GuardarRegistro(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
+procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; var r:THabilidad);
 var
     repetido: boolean;
 begin
@@ -88,7 +86,7 @@ begin
     end;
 end;
 
-procedure LeerRegistro(var a: TarchivoTHabilidades; var r: THabilidad);
+procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);
 begin
     with r do  
     begin
@@ -101,10 +99,72 @@ begin
     end;
 end;
 
-procedure MostrarDatos(var r: THabilidad);
+procedure MostrarDatosHabilidades(var r: THabilidad);
 begin
     if r.Estado then
         Write('Codigo de Habilidad: ', r.CodigoHabilidad, ' | Nombre: ', r.Nombre, ' | Categoria: ', r.Categoria);
+end;
+
+procedure BurbujaCodigoHabilidad(var a:TarchivoTHabilidades);
+var
+    lim, i, j: integer;
+    r1, r2: THabilidad;
+begin
+    lim := FileSize(a) - 1;
+    for i := 1 to lim - 1 do
+    begin
+        for j := 1 to lim - i do
+        begin
+            Seek(a, j);
+            Read(a, r1);
+            Seek(a, j + 1);
+            Read(a, r2);
+            if r1.CodigoHabilidad > r2.CodigoHabilidad then
+            begin
+                Seek(a, j+1);
+                Write(a, r1);
+                Seek(a, j);
+                Write(a, r2);
+            end;
+        end;
+    end;
+end;
+
+procedure BusquedaBinariaHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+var
+    pri, ult, med: integer;
+    aux: THabilidad;
+    buscado: string;
+begin
+    pri := 0;
+    ult := FileSize(a) - 1;
+    pos := -1;
+
+    repeat
+    begin
+        write('Ingrese el codigo de la habilidad a buscar: ');
+        readln(buscado);
+
+        if lenght(buscado) < 10 then
+        begin
+            writeln('El codigo de la habilidad debe tener 10 caracteres.');
+            readln;
+        end;
+    end;
+    until lenght(buscado) = 10;
+
+    while (pos = -1) and (pri <= ult) do
+    begin
+        med := (pri + ult) div 2;
+        Seek(a, med);
+        Read(a, aux);
+        if aux.CodigoHabilidad = buscado then
+            pos := med
+        else if aux.CodigoHabilidad < buscado then
+            pri := med + 1
+        else
+            ult := med - 1;
+    end;
 end;
 
 end.
