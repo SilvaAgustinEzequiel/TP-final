@@ -18,6 +18,10 @@ procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; va
 procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);
 procedure MostrarDatosHabilidades(var r: THabilidad);
 function VerificarRepetido(var r: THabilidad):boolean;
+procedure BurbujaCodigoHabilidad(var a:TarchivoTHabilidades);
+procedure BusquedaBinariaHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+procedure AgregarHabilidades(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+procedure BuscarHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
 
 implementation
 
@@ -135,6 +139,7 @@ var
     pri, ult, med: integer;
     aux: THabilidad;
     buscado: string;
+
 begin
     pri := 0;
     ult := FileSize(a) - 1;
@@ -165,6 +170,39 @@ begin
         else
             ult := med - 1;
     end;
+end;
+
+procedure AgregarHabilidades(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoHabilidades(a);
+        CargarHabilidad(a,pos,r);
+        GuardarRegistro(a,pos,r);
+        CerrarArchivoHabilidades(a);
+        write('Desea continuar Agregando Habilidades? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n');
+end;
+
+procedure BuscarHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+var 
+    SioNo: char;
+begin 
+    repeat
+    begin 
+        AbrirArchivoHabilidades(a);
+        BurbujaCodigoHabilidad(a);
+        BusquedaBinariaHabilidad(a,r,pos);
+        MostrarDatosHabilidades(r);
+        CerrarArchivoHabilidades(a);
+        write('Desea Buscar a otro/otra Habilidades? s/n: ');
+        readln(SioNo);    
+    end;
+    until(SioNo = 'n')
 end;
 
 end.

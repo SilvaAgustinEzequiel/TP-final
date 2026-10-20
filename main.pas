@@ -10,7 +10,9 @@ var
     registroHabilidad: THabilidad;
     registroCompetencias: TCompetencia;
     
-    posicion: integer; // la posicion para pasar como parametro :)
+    posicionEstudiante: integer; 
+    posicionHabilidad: integer; 
+    posicionCompetencia: integer; 
 
 //PROCEDURES :v
 procedure CrearArchivos(var a1: TarchivoEstudiante; var a2: TarchivoTHabilidades; var a3: TarchivoCompetencias);
@@ -27,6 +29,7 @@ begin
     AgregarEstudiantes(archivoEstudiantes,posicion,registroEstudiante);
     BuscarEstudiante(archivoEstudiantes,registroEstudiante,posicion);
     
-
+    AgregarHabilidades(archivoHabilidades,posicion,registroHabilidad);
+    BuscarHabilidad(archivoHabilidades,registroHabilidad,posicion);
 
 end.
