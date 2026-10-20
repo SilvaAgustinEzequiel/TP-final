@@ -4,7 +4,9 @@ uses
 var 
     archivoEstudiantes: TarchivoEstudiante;
     archivoHabilidades: TarchivoTHabilidades;
-    archivoCompetencias: TarchivoCompetencias;
+    archivoCompetencias: TarchivoCompetencias; //POPCUCK
+    
+    posicion: integer; // la posicion para pasar como parametro :)
 
 procedure CrearArchivos(var a1: TarchivoEstudiante; var a2: TarchivoTHabilidades; var a3: TarchivoCompetencias);
 begin 
@@ -12,7 +14,9 @@ begin
     CrearArchivoHabilidades(a2);
     CrearArchivoCompetencias(a3);
 end;
+
 begin 
 // PROGRAMA PRINCIPAL XD :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
+
 end.

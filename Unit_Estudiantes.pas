@@ -67,4 +67,12 @@ begin
     end;
 end;
 
+procedure Listado(var a: archivoEstudiantes);
+var 
+    r: TarchivoEstudiante;
+    
+begin 
+
+end;
+
 end.
