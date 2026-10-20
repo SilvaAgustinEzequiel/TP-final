@@ -14,6 +14,12 @@ type
 
     TarchivoEstudiante = file of TEstudiante;
 
+procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
+procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
+procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
+procedure LeerRegistro(var a: TarchivoEstudiante; pos:integer; var r: TEstudiante);
+procedure GuardarRegistro(var a:TarchivoEstudiante; pos:integer; var r:TEstudiante);
+
 implementation
 
 uses 
