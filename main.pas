@@ -5,6 +5,10 @@ var
     archivoEstudiantes: TarchivoEstudiante;
     archivoHabilidades: TarchivoTHabilidades;
     archivoCompetencias: TarchivoCompetencias; //POPCUCK
+
+    registroEstudiante: TEstudiante;
+    registroHabilidad: THabilidad;
+    registroCompetencias: TCompetencia;
     
     posicion: integer; // la posicion para pasar como parametro :)
 
@@ -18,6 +22,8 @@ end;
 begin 
 // PROGRAMA PRINCIPAL XD :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
+    BusquedaBinaria(archivoEstudiantes, registroEstudiante, posicion );
+    MostrarDatos(registroEstudiante);
 //
 //
 //                   *

@@ -109,5 +109,9 @@ begin
             pri := med + 1;
     end;
 end;
+procedure MostrarDatos(var r: TEstudiante);
+begin 
+    //COSITAS AQUIIII
+end;
 
 end.
