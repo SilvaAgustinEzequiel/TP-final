@@ -18,5 +18,22 @@ end;
 begin 
 // PROGRAMA PRINCIPAL XD :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
+//
+//
+//                   *
+//              *
+//          
+//            * 
+//        *********    
+//        *   *   *
+//        *   *   *
+//        *       *
+//        *       *
+//        *       * 
+//        *       *
+// ********       *********
+// *      *       *       *
+// *      *       *       *
+// ********       *********
 
 end.
