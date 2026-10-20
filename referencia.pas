@@ -22,24 +22,7 @@ var
     seleccion, posicion : Integer;
     buscado : String;
 
-Function Formato(num : string): string;
-var 
-    i,k, cont : integer;
-    
-begin
-    Formato := '$';
-    cont := 0;
-    for i := 1 to Length(num) do
-        begin
-            inc(cont);
-            Formato := Formato + num[i];
-            if (cont = 3) and (i <> Length(num)) then
-                begin 
-                    Formato := Formato + '.';   
-                    cont := 0;
-                end;
-        end;
-end; 
+
 
 procedure Guardar(var op: t_operacion ;var arch : t_archivo);   
     begin   

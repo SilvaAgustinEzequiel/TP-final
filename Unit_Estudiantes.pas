@@ -68,12 +68,46 @@ begin
     end;
 end;
 
-procedure Listado(var a: archivoEstudiantes);
+// NUEVOOOOOOOOOOOOOOOO
+procedure BusquedaBinaria (var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 var 
-    r: TarchivoEstudiante;
-    
-begin 
+    pri, ult, med: integer;
+    aux,: TEstudiante;
+    buscado: String;
+begin
+    // TOMO EL LEGAJO A BUSCAR :)
+    repeat
+    begin     
+        write('Ingrese el legajo del/la estudiante a buscar, deben ser 10 caracteres');
+        readln(buscado); 
 
+        if length(buscado) <> 10 then
+        begin
+            writeln('Error: debe ingresar 10 caracteres, presione Enter para continuar...');
+            readln;
+        end;
+    end;      
+    until (length(buscado) = 10);
+    
+    
+    pri := 0;
+    ult := filesize(a) - 1;
+    pos := -1;
+    while (pos = 0) and (pri <= ult) do
+    begin
+        med := (pri + ult) div 2;
+        
+        seek(a,med); //POSICIONO EL PUNTERO AL MEDIO 
+        read(a,r);
+        
+        if (r.Legajo = buscado) then
+            pos := med
+        else
+        if r.Legajo > buscado then
+            ult := med - 1
+        else
+            pri := med + 1;
+    end;
 end;
 
 end.
