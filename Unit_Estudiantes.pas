@@ -1,4 +1,5 @@
 Unit Unit_Estudiantes;
+{$CODEPAGE UTF8}
 
 interface 
 type 

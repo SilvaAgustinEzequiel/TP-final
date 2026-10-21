@@ -1,4 +1,5 @@
 Unit Unit_Habilidades;
+{$CODEPAGE UTF8}
 
 interface 
 type 

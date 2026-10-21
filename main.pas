@@ -1,4 +1,6 @@
 program TP_Final;
+{$CODEPAGE UTF8}
+
 uses
     Unit_Competencias, Unit_Estudiantes, Unit_Habilidades, crt;
 var 
