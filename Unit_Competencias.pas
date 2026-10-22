@@ -12,8 +12,9 @@ type
     TarchivoCompetencias = file of TCompetencia;
 
 procedure CrearArchivoCompetencias(var a: TArchivoCompetencias);
-procedure CargarRegistroCompetencias(var a: TarchivoCompetencias);
-
+procedure abrirRegistroCompetencias(var a: TArchivoCompetencias);
+procedure cerrarRegristrosCompetencias(var a: TArchivoCompetencias);
+procedure LeerRegistroCompetencias(var a: TArchivoCompetencias;pos:integer; var r :TCompetencia);
 
 implementation
 
@@ -22,11 +23,11 @@ uses
 
 procedure CrearArchivoCompetencias(var a: TArchivoCompetencias);
 begin 
-    if FileExist('Competencias.dat') then
+    if FileExists('Competencias.dat') then
         writeln('El archivo ya existe')
     else 
         Assign(a, 'Competencias.dat');
-        rewrite(a);
+        rewrite(a);  
 end;
 
 procedure abrirRegistroCompetencias(var a: TArchivoCompetencias);
@@ -35,11 +36,11 @@ begin
         reset(a);
 
 end;
-procedure cerrarRegristrosCompetencias(var a: TArchivosCompetencias);
+procedure cerrarRegristrosCompetencias(var a: TArchivoCompetencias);
 begin
         close(a)
 end;
-procedure LeerRegistroCompetencias(var a: TArchivosCompetencias;pos:integer var r :TCompetencia);
+procedure LeerRegistroCompetencias(var a: TArchivoCompetencias;pos:integer; var r :TCompetencia);
 
 begin
 

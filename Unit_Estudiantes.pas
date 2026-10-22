@@ -24,6 +24,7 @@ procedure GuardarRegistroEstudiante(var a:TarchivoEstudiante; pos:integer; var r
 procedure BurbujaLegajo(var a:TarchivoEstudiante);
 procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 procedure MostrarDatosEstudiante(var r: TEstudiante);
+procedure AgregarEstudiantes(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 
 implementation
 
@@ -32,7 +33,7 @@ uses
 
 procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
 begin 
-    if FileExist('Competencias.dat') then
+    if FileExists('Competencias.dat') then
         writeln('El archivo ya existe')
     else 
         Assign(a, 'Estudiantes.dat');
@@ -121,7 +122,6 @@ end;
 procedure BusquedaBinariaEstudiante(var a: TarchivoEstudiante;var r: TEstudiante; var pos: integer);
 var 
     pri, ult, med: integer;
-    aux: TEstudiante;
     buscado: String;
 begin
     // TOMO EL LEGAJO A BUSCAR :)
@@ -177,7 +177,7 @@ begin
     begin 
         AbrirArchivoEstudiantes(a);
         CargarEstudiante(a,pos,r);
-        GuardarRegistro(a,pos,r);
+        GuardarRegistroEstudiante(a,pos,r);
         CerrarArchivoEstudiantes(a);
         write('Desea continuar Agregando Estudiantes? s/n: ');
         readln(SioNo);    

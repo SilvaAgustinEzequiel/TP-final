@@ -14,7 +14,7 @@ var
     
     posicionEstudiante: integer; 
     posicionHabilidad: integer; 
-    posicionCompetencia: integer; 
+    //posicionCompetencia: integer; 
 
 //PROCEDURES :v
 procedure CrearArchivos(var a1: TarchivoEstudiante; var a2: TarchivoTHabilidades; var a3: TarchivoCompetencias);
@@ -28,10 +28,10 @@ end;
 begin 
 // PROGRAMA PRINCIPAL  :)    
     CrearArchivos(archivoEstudiantes, archivoHabilidades, archivoCompetencias);
-    AgregarEstudiantes(archivoEstudiantes,posicion,registroEstudiante);
-    BuscarEstudiante(archivoEstudiantes,registroEstudiante,posicion);
+    AgregarEstudiantes(archivoEstudiantes,registroEstudiante,posicionEstudiante);
+    BusquedaBinariaEstudiante(archivoEstudiantes,registroEstudiante,posicionEstudiante);
     
-    AgregarHabilidades(archivoHabilidades,posicion,registroHabilidad);
-    BuscarHabilidad(archivoHabilidades,registroHabilidad,posicion);
+    AgregarHabilidades(archivoHabilidades,registroHabilidad,posicionHabilidad);
+    BuscarHabilidad(archivoHabilidades,registroHabilidad,posicionHabilidad);
 
 end.

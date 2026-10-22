@@ -7,6 +7,7 @@ type
         CodigoHabilidad: String[10];
         Nombre: String[40];
         Categoria: String[30];
+        Estado: boolean;
         end;
 
     TarchivoTHabilidades = file of THabilidad;
@@ -23,6 +24,8 @@ procedure BurbujaCodigoHabilidad(var a:TarchivoTHabilidades);
 procedure BusquedaBinariaHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
 procedure AgregarHabilidades(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
 procedure BuscarHabilidad(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
+procedure CargarHabilidad(var a: TarchivoTHabilidades; var pos: integer; r: THabilidad);
+
 
 implementation
 
@@ -151,13 +154,13 @@ begin
         write('Ingrese el codigo de la habilidad a buscar: ');
         readln(buscado);
 
-        if lenght(buscado) < 10 then
+        if Length(buscado) < 10 then
         begin
             writeln('El codigo de la habilidad debe tener 10 caracteres.');
             readln;
         end;
     end;
-    until lenght(buscado) = 10;
+    until Length(buscado) = 10;
 
     while (pos = -1) and (pri <= ult) do
     begin
@@ -173,6 +176,12 @@ begin
     end;
 end;
 
+// NUEVOOOOO
+procedure CargarHabilidad(var a: TarchivoTHabilidades; var pos: integer; r: THabilidad);
+begin 
+    //LOGICA AQUI PLEASE :)
+end;
+
 procedure AgregarHabilidades(var a: TarchivoTHabilidades;var r: THabilidad; var pos: integer);
 var 
     SioNo: char;
@@ -181,7 +190,7 @@ begin
     begin 
         AbrirArchivoHabilidades(a);
         CargarHabilidad(a,pos,r);
-        GuardarRegistro(a,pos,r);
+        GuardarRegistroHabilidades(a,pos,r);
         CerrarArchivoHabilidades(a);
         write('Desea continuar Agregando Habilidades? s/n: ');
         readln(SioNo);    

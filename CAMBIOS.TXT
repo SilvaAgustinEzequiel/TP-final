@@ -1,0 +1,10 @@
+Hasta ahora solucione estas cositas gurises :)
+
+
+Un procedure requeria en el registro de habilidad
+un campo de tipo boolean llamado Estado
+
+Pequeños problemitas de Sintaxis y nombres de 
+procedures.
+
+Pequeño error con lenght era Length() xd
