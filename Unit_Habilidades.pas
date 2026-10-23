@@ -30,12 +30,16 @@ procedure CargarHabilidad(var a: TarchivoTHabilidades; var pos: integer; r: THab
 implementation
 
 uses
-  Crt;
+  Crt, SysUtils;
 
 procedure CrearArchivoHabilidades(var a: TarchivoTHabilidades);
 begin 
-    Assign(a, 'Habilidades.dat');
-    rewrite(a);
+    
+    if FileExists('Habilidades.dat') then 
+        writeln('EL archivo ya existe')
+    else 
+        Assign(a, 'Habilidades.dat');
+        rewrite(a);
 end;
 
 procedure AbrirArchivoHabilidades(var a: TarchivoTHabilidades);
@@ -76,6 +80,7 @@ procedure GuardarRegistroHabilidades(var a:TarchivoTHabilidades; pos:integer; va
 var
     repetido: boolean;
 begin
+    AbrirArchivoHabilidades(a);
     repetido := VerificarRepetido(r);
     if not repetido then
     begin
@@ -92,6 +97,7 @@ begin
             Write(a, r);
         end;
     end;
+    CerrarArchivoHabilidades(a);
 end;
 
 procedure LeerRegistroHabilidades(var a: TarchivoTHabilidades; var r: THabilidad);

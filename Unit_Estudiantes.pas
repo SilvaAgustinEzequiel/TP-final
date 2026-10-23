@@ -6,7 +6,8 @@ type
     TEstudiante = record 
         Legajo: String[10];
         DNI: String[10];
-        NombreApellido: String[60];
+        Nombre: String[60];
+        Apellido: String[60]; // JULIAN DIJO DE QUE SEAN DOS CAMPOS NOMBRE y APELLIDO
         Carrera: String[60];
         AnioIngreso: word;
         Promedio: real;
@@ -33,6 +34,7 @@ uses
 
 procedure CrearArchivoEstudiantes(var a: TarchivoEstudiante);
 begin 
+    
     if FileExists('Competencias.dat') then
         writeln('El archivo ya existe')
     else 
@@ -43,7 +45,7 @@ end;
 procedure AbrirArchivoEstudiantes(var a: TarchivoEstudiante);
 begin
     Assign(a, 'Estudiantes.dat');
-    Reset(a)
+    Reset(a);
 end;
 
 procedure CerrarArchivoEstudiantes(var a: TarchivoEstudiante);
@@ -75,8 +77,10 @@ end;
 
 procedure CargarEstudiante(var a:TarchivoEstudiante; pos: integer; var r:TEstudiante);
 begin 
-    write('Ingrese el nombre y apellido del/la estudiante: ');
-    readln(r.NombreApellido);
+    write('Ingrese el nombre del/la estudiante: ');
+    readln(r.Nombre);
+    write('Ingrese el apellido del/la estudiante');
+    readln(r.Apellido);
     write('Ingrese el DNI del/la estudiante: ');
     readln(r.DNI);
     write('Ingrese el Legajo del/la estudiante: ');
@@ -160,7 +164,7 @@ begin
 end;
 procedure MostrarDatosEstudiante(var r: TEstudiante);
 begin 
-    writeln('Nombre y apellido: ',r.NombreApellido);
+    writeln('Nombre y apellido: ',r.Nombre,' ',r.Apellido);
     writeln('DNI: ',r.DNI);
     writeln('Legajo: ',r.Legajo);
     writeln('Carrera: ',r.Carrera);
@@ -175,10 +179,9 @@ var
 begin 
     repeat
     begin 
-        AbrirArchivoEstudiantes(a);
+        ClrScr;
         CargarEstudiante(a,pos,r);
         GuardarRegistroEstudiante(a,pos,r);
-        CerrarArchivoEstudiantes(a);
         write('Desea continuar Agregando Estudiantes? s/n: ');
         readln(SioNo);    
     end;
@@ -190,7 +193,7 @@ var
 begin 
     repeat
     begin 
-        AbrirArchivoEstudiantes(a);
+        ClrScr;
         BurbujaLegajo(a);
         BusquedaBinariaEstudiante(a,r,pos);
         MostrarDatosEstudiante(r);
